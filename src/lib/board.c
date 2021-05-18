@@ -93,6 +93,13 @@ board_t* board_create(int width, int height, int num_on) {
 
 	generate_hints(board);
 
+	// clear all pixels
+	for (int row = 0; row < height; row++) {
+		for (int col = 0; col < width; col++) {
+			clear_pixel(board, row, col);
+		}
+	}
+
 	return board;
 }
 
