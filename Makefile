@@ -8,7 +8,7 @@ LDFLAGS =
 LDLIBS = -lSDL2
 
 WARNINGS = -Wall -Wextra -Werror
-WARNINGS_EXC = -Wno-unused-parameter -Wno-error=unused-variable -Wno-error=unused-result 
+WARNINGS_EXC = -Wno-unused-parameter -Wno-error=unused-variable -Wno-error=unused-result
 CFLAGS += $(WARNINGS)
 CFLAGS += $(WARNINGS_EXC)
 
