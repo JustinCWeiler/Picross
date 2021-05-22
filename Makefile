@@ -1,9 +1,9 @@
 BIN = main
-TEST = test
+TEST = board_test
 BUILD_DIR = build
 
 CC = gcc
-CFLAGS = -std=c99 -Og -g -Iinclude
+CFLAGS = -std=c99 -O0 -g -Iinclude -I/usr/include/SDL2
 LDFLAGS = 
 LDLIBS = -lSDL2
 

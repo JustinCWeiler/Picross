@@ -21,6 +21,7 @@ static inline void generate_hint_row(board_t* board, int row) {
 	int chain_size = 0;
 	for (int col = 0; col < board->width; col++) {
 		if (get_pixel(board, row, col) == 1) {
+			chain_size++;
 		}
 		else if (chain_size > 0) {
 			hints_row[num_hints] = chain_size;
@@ -44,6 +45,7 @@ static inline void generate_hint_col(board_t* board, int col) {
 	int chain_size = 0;
 	for (int row = 0; row < board->height; row++) {
 		if (get_pixel(board, row, col) == 1) {
+			chain_size++;
 		}
 		else if (chain_size > 0) {
 			hints_col[num_hints] = chain_size;
@@ -63,19 +65,20 @@ static inline void generate_hints(board_t* board) {
 		generate_hint_row(board, row);
 	}
 	// generate col hints
+	board->hints_cols = malloc(board->width*sizeof(int*));
 	for (int col = 0; col < board->width; col++) {
 		generate_hint_col(board, col);
 	}
 }
 
 board_t* board_create(int width, int height, int num_on) {
-	board_t* board = malloc(sizeof(board));
+	board_t* board = malloc(sizeof(board_t));
 
 	board->width = width;
 	board->height = height;
 	board->num_on = num_on;
 
-	board->pixels = malloc(height*sizeof(int*));
+	board->pixels = malloc(height*width*sizeof(int));
 
 	// generate the board
 	int size = width*height;
@@ -87,7 +90,7 @@ board_t* board_create(int width, int height, int num_on) {
 				draw_pixel(board, row, col);
 			else
 				clear_pixel(board, row, col);
-			size = size == 0 ? size - 1 : 0;
+			size = size == 0 ? 0: size - 1;
 		}
 	}
 
