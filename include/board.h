@@ -21,6 +21,7 @@ void board_destroy(board_t* board);
 void board_clear(board_t* board);
 
 void board_print_basic(board_t* board);
+void board_print(board_t* board);
 
 void draw_pixel(board_t* board, int row, int col);
 void clear_pixel(board_t* board, int row, int col);

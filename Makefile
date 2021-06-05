@@ -1,5 +1,5 @@
 BIN = main
-TEST = board_test
+TEST = board_print_test
 BUILD_DIR = build
 
 CC = gcc

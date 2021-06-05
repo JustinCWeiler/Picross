@@ -141,6 +141,40 @@ void board_print_basic(board_t* board) {
 	}
 }
 
+void board_print(board_t* board) {
+	board_print_basic(board);
+
+	// print row hints
+	printf("Row Hints:\n");
+	for (int row = 0; row < board->num_rows; row++) {
+		if (board->hints_rows[row][0] == 0) {
+			printf("0\n");
+			continue;
+		}
+
+		printf("%d", board->hints_rows[row][1]);
+		for (int i = 2; i < board->hints_rows[row][0] + 1; i++) {
+			printf(" %d", board->hints_rows[row][i]);
+		}
+		printf("\n");
+	}
+
+	// print col hints
+	printf("Column Hints:\n");
+	for (int col = 0; col < board->num_cols; col++) {
+		if (board->hints_cols[col][0] == 0) {
+			printf("0\n");
+			continue;
+		}
+
+		printf("%d", board->hints_cols[col][1]);
+		for (int i = 2; i < board->hints_cols[col][0] + 1; i++) {
+			printf(" %d", board->hints_cols[col][i]);
+		}
+		printf("\n");
+	}
+}
+
 void draw_pixel(board_t* board, int row, int col) {
 	BOUNDS(board, row, col, );
 
